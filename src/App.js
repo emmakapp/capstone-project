@@ -1,12 +1,18 @@
 import './App.css';
+import logo from './Assets/logo.png'  
+import Nav from './Nav';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <div>Home</div>
-      </header>
-    </div>
+      <Nav />
+      <Header />
+      <Main />
+      <Footer />
+         </div>
   );
 }
 

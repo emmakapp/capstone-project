@@ -1,56 +1,57 @@
 import React from "react";
-import Main from "./Main";
-import { Box, Heading } from "@chakra-ui/react";
-import CardSpecial from "./components/CardSpecial";
+import CardSpecial from "./CardSpecial";
+
+import "../css/Specials.css"
 
 
 const specials = [
     {
         title: "Greek Salad",
         description: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-        getImageSrc: () => require("../assets/greeksalad.jpg"),
+        price: "$12.99",
+        getImageSrc: () => require("../assets/greeksalad.png"),
     },
 
     {
         title: "Bruschetta",
         description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-        getImageSrc: () => require("../assets/bruschetta2.jpg"),
+        price: "$5.99",
+        getImageSrc: () => require("../assets/bruschetta.png"),
     },
 
     {
         title: "Lemon Dessert",
         description: "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
-        getImageSrc: () => require("../assets/lemondessert.jpg"),
+        price: "$7.99",
+        getImageSrc: () => require("../assets/lemondessert.png"),
     },
 
 
-]
+];
 
 const Specials = () => {
     return (
-        <Main
-            backgroundColor='#EDEFEE'
-            p={8}
-            alignItems="space-around"
-            spacing={8}
-            >
-<Heading as="h1" id="specials">This week's specials</Heading>
-<Box
-display="grid"
-gridTemplateColumns="repeat(2, minmax(0, 1fr))"
-gridGap={8}
->
-{specials.map((special) => (
-    <CardSpecial
-    key={special.title}
-    title={special.title}
-    description={special.description}
-    imageSrc={special.getImageSrc()}
-    />
-
-) )}
-</Box>
-            </Main>
+        <div className="cardspecials">
+          
+                <div className="welcome" >
+                    <h2>This week's specials</h2>
+                        <button type="button" style={{ backgroundColor: "#F4CE17", padding: "12px 24px", marginTop:"20px", marginBottom:"20px" }} >
+                            <a href="./order"> Online Menu</a></button>
+                    </div>
+                <div className="cards">
+                    <div id="card">
+                        {specials.map((special) => (
+                            <CardSpecial
+                            key={special.title}
+                            title={special.title}
+                            description={special.description}
+                            price={special.price}
+                            imageSrc={special.getImageSrc()}
+                            />
+                        ))} 
+                    </div>
+        </div>
+</div>
 );
 };
 

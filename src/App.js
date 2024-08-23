@@ -1,38 +1,35 @@
-import { Routes, Route } from  'react-router-dom';
-import './app.css';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Main from './components/Main';
-import CustomersSay from './components/CustomersSay';
-import About from './components/About';
-import Footer from './components/Footer';
-import Menu from './components/Menu';
-import BookingPage from './components/BookingPage';
-import Login from './components/Login';
-import Order from './components/Order';
+import React from 'react';
+import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
-const App = () => {
+
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import Menu from './components/pages/Menu';
+import BookingPage from './components/pages/BookingPage';
+import Confirmation from './components/pages/Confirmation';
+import Order from './components/pages/Order';
+import Login from './components/pages/Login';
+import RootLayout from './layouts/RootLayout';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element= {<Home />} />
+     <Route path= 'about' element={<About />}  />
+     <Route path= 'menu' element={<Menu />}  />
+     <Route path= 'bookingpage' element={<BookingPage />}  /> 
+     <Route path= 'confirmation' element={<Confirmation />}  />  
+     <Route path= 'order' element={<Order />}  />
+     <Route path= 'login' element={<Login />}  />
+ </Route>
+)
+);
+
+
+function App() {
   return (
-    
-    <>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/components/About' element={<About />} />
-          <Route path='/components/Menu' element={<Menu />} />
-          <Route path='/components/BookingPage' element={<BookingPage />} />
-          <Route path='/components/Order' element={<Order />} />
-          <Route path='/components/Login' element={<Login />} />
-
-        </Routes>
-        <Header />
-        <Main />
-        <CustomersSay />
-        <About />
-        <Footer />
-      </>
-   
+    <RouterProvider router={router} />
+ 
   );
 }
 

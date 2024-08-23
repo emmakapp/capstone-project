@@ -1,0 +1,11 @@
+
+
+
+export const initialFormState = {
+    date: '',
+    time: '',
+    guests: '1',
+    occasion: '',
+};
+
+

@@ -1,10 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import restaurantfood from './restaurantfood.png';
-
-import './Header.css';
+import restaurantfood from '../assets/restaurantfood.png';
+import '../css/Header.css';
  
-
 export default function Header () {
     return  (
         <div className="wrapper-header" >
@@ -15,8 +14,9 @@ export default function Header () {
                     <h2>Pittsburgh</h2>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                
-                <button className="herobutton" type="button" style={{ backgroundColor: "#F4CE17", padding: "12px 24px", marginTop:"20px", marginBottom:"20px" }}>Reserve a Table</button>
-                </div>
+                <div className="herobutton" type="button" >
+                    <Link to="/bookingpage"> <button aria-label="On Click">Reserve a Table</button> </Link>
+                </div></div>
           
                 <div className="headerimage">
                     <img src={restaurantfood}  alt="restaurant server" /> 

@@ -1,68 +1,74 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
-
-import { submitAPI } from "../../utilities/fetchAPIutil";
-import { useDataContext } from '../../hooks/contextAPI';
-
-import { ErrorMessage } from "../ErrorMessage";
+import { submitAPI } from '../../utilities/fetchAPIutil';
+import { ErrorMessage } from '../ErrorMessage';
 
 import "../../css/Booking.css";
 
-function BookingForm() {
-   const { availableTimes, dispatch, formState, setFormState } = useDataContext();
+function BookingForm(props) {
+   const [date, setDate] = useState("");
+   const [guests, setGuests] = useState("");
+   const [occasion, setOccasion] = useState("");
+   const [selectedTime, setSelectedTime] = useState("");
 
-   const[error, setError] = useState(true);
+   const [finalTime, setFinalTime] = useState([]);
+   const [error, setError] = useState(false);
+
+ 
+
 
    useEffect(() => {
-      dispatch({ type: 'UPDATE_TIMES', date: new Date() });
-   }, [dispatch]);
-      ;
+
+      setFinalTime(props.availableTimes.map((time) => <option key={time}>
+         {time}
+      </option>));
+   }, [props.availableTimes]);
+ 
+   function handleDateChange(e) {
+      const selectedDate = new Date(e.target.value);
+      setDate(e.target.value);
+      props.updateTimes(selectedDate);
+   };
+   
    
    const navigate = useNavigate();
-
-
-   function submitForm(formData) {
-      const response = submitAPI(formData);
-      if(response) {
-         setError(false);
-         localStorage.setItem('formDate', JSON.stringify(formData));
-        navigate('/confirmation');
-      } else {
-    
-         setError(true);
-         console.log('there is an error submitting form');
+   async function submitForm(e) {
+      e.preventDefault();
+      try {
+         const formData = { date, guests, occasion, time: selectedTime };
+         const response = await submitAPI(formData);
+         if (response) {
+            setError(false);
+            localStorage.setItem('formData', JSON.stringify(formData));
+            navigate("/confirmation");
+         } else {
+            throw new Error('Submission failed');
+         } 
+         } catch (error) {
+            setError(true);
+            console.log("there is an error submitting the form", error);
+         
       }
-  }
-
-   function handleSubmit(e) { 
-         e.preventDefault();
-         console.log('form submitted');
-         submitForm(formState);
-   };
       
-   function handleDateChange(e) {
-      const selectedDate = e.target.value;
-      setFormState({ ...formState, date: selectedDate });
-      dispatch({ type: "UPDATE_TIMES", date: selectedDate }); 
-   
-   };
-
+   }
 
    return (
-     <form  onSubmit={handleSubmit}>
-
-
-   
-            <div>
+      <>
+     <form onSubmit={submitForm}>
+         <div className='form-wrapper'>
+            <h3 style={{ paddingBottom: "40px",textAlign:"center" }}>Please fill in the form below</h3>
+               <div>
+           
                <label htmlFor="res-date">Pick a date</label>
                   <input
                      id="res-date" 
                      type="date" 
                      required
-                     value={formState.date || "" }
+                     value={date}
                      onChange={handleDateChange}
                      name='res-date'
-                     aria-label="Select Date"
+                     aria-label="res-date"
                      
                   />
             </div>
@@ -71,22 +77,20 @@ function BookingForm() {
                <label htmlFor="res-time">Pick a time</label>
                   <select
                      id="res-time"
+                     type="time"
                      required
                      name='res-time'
-                     aria-label='Select Time'
-                     value={formState.time || "" }
-                     onChange={(e) => setFormState({ ...formState, time: e.target.value})}
-                  
-                  >      
+                     placeholder=''
+                     aria-label='res-time'
+                     value={selectedTime}
+                     onChange={(e) => setSelectedTime(e.target.value)} >
+ 
                 
-                     {availableTimes.map((time, index) => (
-                        <option key={index} value={time}> {time}</option> 
-
-                       ))}
+                     {finalTime}
                    </select>
               </div>
               <div>
-               <label htmlFor="guests">Number of people in your party</label>
+               <label htmlFor="guests">Number of Guests</label>
                   <input
                      id="guests" 
                      type="number"  
@@ -95,35 +99,33 @@ function BookingForm() {
                      max="10"
                      required
                      aria-label='Number of Guests'
-                     value={formState.numberOfGuests || "1" }
-                     placeholder="1"  
-                     onChange={(e) => setFormState({ ...formState, numberOfGuests: e.target.value })} />
+                     value={guests}
+                     placeholder=""  
+                     onChange={(e) => setGuests(e.target.value)} />
                </div>
                <div>
                <label htmlFor="booking-occasion">If applicable, pick an occasion.</label>
                   <select
                      id="booking-occasion" 
-                     value={formState.occasion || "" }
-                     onChange={(e) => setFormState({ ...formState, occasion: e.target.value })}
+                     value={occasion}
+                     onChange={(e) => setOccasion(e.target.value)} 
                   >
                   <option value="Select an Occasion">Select an Occasion</option>
                   <option value="Birthday">Birthday</option>
                   <option value="Anniversary">Anniversary</option>
                   <option value="Engagement">Engagement</option>
                 </select>
-                </div>
+               </div>
+            { error && <ErrorMessage message="There was an error submitting this reservation" />}
+         <button 
+            className="booking-btn" 
+            id="submit-button" 
+            type="submit"  
+         >Reserve my table</button>
+</div>
+</form>
 
-                { error && <ErrorMessage message="There was an error submitting the form." /> }  
-
-               <button 
-                  className="booking-btn" 
-                  id="submit-button" 
-                  type="submit" 
-                  arial-label="Reserve my table"
-                  >Reserve my table
-               </button>
-    
-      </form>
+   </>
    );
 };
 

@@ -1,10 +1,10 @@
 
 
 
-export const initialFormState = {
+export const initialState = {
     date: '',
     time: '',
-    guests: '1',
+    numberOfGuests: '',
     occasion: '',
 };
 

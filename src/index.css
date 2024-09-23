@@ -96,12 +96,10 @@ p {
 #confirmationwrapper {
   display: flex;
   max-width: 960px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   margin: 100px auto;
   background-color: #fff;
-  padding-left: 50px;
-  padding-right: 50px;
 }
 
 /* menu login*/
@@ -148,6 +146,19 @@ p {
       color: #EE9972;
     }
     
+
+    /* confirmation page*/
+
+#confirmationwrapper {
+  display: flex;
+  max-width: 960px;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 100px auto;
+  background-color: #fff;
+}
  }
 
 

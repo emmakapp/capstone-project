@@ -1,54 +1,35 @@
-import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import { NavLink, Outlet } from "react-router-dom";
-import "../css/Navbar.css";
+import Home from "../components/pages/Home";
+import About from "../components/pages/About";
+import Menu from "../components/pages/Menu";
+import BookingPage from "../components/pages/BookingPage";
+import Confirmation from "../components/pages/Confirmation";
+import BookingForm from "../components/pages/BookingForm";
+import Specials from "../components/Specials";
+import Order from "../components/pages/Order";
+import Login from "../components/pages/Login";  
 
-
-import logo from "../assets/logo.svg"
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-
-import { HiOutlineMenu } from "react-icons/hi";
-import { FaRegTimesCircle } from "react-icons/fa";
-
-export default function RootLayout () {
-    
-  const[click, setClick] = useState(false)
-  const handleClick = () => setClick(!click)
-
+export default function RootLayout()  {
 
   return (
+    <Routes>
     
-    <div className='root-layout'>
-    
-       <nav>
-          <div className="logo">
-            <NavLink to='/'><img src={logo} alt="logo" /></NavLink>
-        </div>
+                <Route path="/" element={<Home />} />
+                <Route path="/about"element={<About />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/bookingform" element={<BookingForm />} />
+                <Route path="/bookingpage" element={<BookingPage />} />
+                <Route path="/confirmation" element={<Confirmation />} />
+              
 
-        <div className={click ? 'nav-menu active' : 'nav-menu'}>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="about">About</NavLink>
-                <NavLink to="menu">Menu</NavLink>
-                <NavLink to="bookingpage">Reservations</NavLink>
-                <NavLink to="order">Order</NavLink>
-                <NavLink to="login">Login</NavLink>
-                </div>
-                <div className='hamburger' onClick={handleClick}>
-                    {click ? (<FaRegTimesCircle className='icon' />) : (<HiOutlineMenu className='icon' />)}
-                  </div>
-  
-                  </nav>
-     <div className="header"><Header /></div>
-           <div>
-     
-        
-      
-        <Outlet />
-  </div>
-   
-      <div className="footer"><Footer /></div>
-    </div>
+                <Route path="/specials"element={<Specials />} />
+                <Route path="/order"element={<Order />} />
+                <Route path="/login"element={<Login />} />
+
+
+
+   </Routes>
   )
 }
 

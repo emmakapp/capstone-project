@@ -1,5 +1,14 @@
 /* BookingForm */
 
+.form-wrapper {
+    display: flex;
+    max-width: 600px;
+
+    flex-direction: column;
+    margin: 100px auto;
+    background-color: #fff;
+  }
+
 
 main {
     margin: 10px auto;
@@ -192,11 +201,18 @@ label {
 @media screen and (max-width: 940px) {
 
     #bookingform-section {
-        margin-top: 20px;
+        margin-top: 2px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-top: 0;
     }
+
+    .form-wrapper {
+    
+        margin: 20px auto;
+
+      }
 
     .booking-description {
         display: flex;

@@ -4,7 +4,7 @@ import { BiCycling } from "react-icons/bi";
 const CardSpecial = ({ title, price, description, imageSrc }) => {
 
     return (
-        <div className="wrapper-cardspecial">
+        <div className="wrapper-cardspecial" >
         
             <img className="card-image" src={imageSrc} alt={title} style={{ 
            height: "260px", objectFit: "cover", position: "relative", 
@@ -15,7 +15,7 @@ const CardSpecial = ({ title, price, description, imageSrc }) => {
                 <div className="specialtitle" >
                     <span className="cardtitle" style={{ fontFamily: "'Karla', sans-serif", fontSize: "18pt", fontWeight: "700" }}>{title}</span>
                     <span className="price" style={{ display: "flex", fontFamily: "'Karla', sans-serif", verticalAlign: "text-top", 
-                    fontSize: "14pt", fontWeight: "700", color: "#EE9972", justifyContent: "flex-end", alignItems: "flex-end", textAlign: "right"  }}>{price}</span>
+                    fontSize: "14pt", fontWeight: "700", color: "#EE9972" }}>{price}</span>
                 </div>
                 
                 <div className="specialmaincard">
@@ -23,9 +23,9 @@ const CardSpecial = ({ title, price, description, imageSrc }) => {
                 </div>
                 
                 <div className="specialfooter">
-                    <span className="cardfooter" style={{ fontFamily: "'Karla', sans-serif", fontSize: "16pt", fontWeight: "500", }} >
+                    <span className="cardfooter" style={{ fontFamily: "'Karla', sans-serif", fontSize: "16pt", fontWeight: "500" }} >
                         Order a delivery</span>
-                    <a href="./order">
+                    <a href="./order" alt="order" title="order">
                         <span className="bicycleicon">
                             <BiCycling className="bicycleicon" style={{ fontSize: "2rem", textAlign: "right", verticalAlign: "text-bottom"  }}/>
                             </span>

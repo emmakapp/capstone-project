@@ -1,11 +1,9 @@
-import React from "react";
+
 import { Outlet } from "react-router-dom";
 
-
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useCallback } from "react";
 import { fetchAPI } from "../../utilities/fetchAPIutil";
-
-import BookingForm from "./BookingForm";
+import BookingForm  from "./BookingForm";
 
 export default function BookingPage() {
 
@@ -22,28 +20,22 @@ export default function BookingPage() {
 
 
   const [availableTimes, dispatch] = useReducer(updateTimes, initialState);
- 
-
-   useEffect(() => {
-    async function initializeTimes() {
-      try {
-      const time = await fetchAPI(new Date());
-      dispatch({ type: "SET TIMES", payload: time});
-    } catch (error) {
-      console.log("error fetching initial times:", error);
-    }
-     }
-     initializeTimes();
-   }, []);
   
-   const initializeTimes = async (date) => {
+  
+  const initializeTimes = useCallback(async (date) => {
     try { 
     const time = await fetchAPI(date);
     dispatch({ type: "SET TIMES", payload: time });
     } catch (error) {
       console.log("error fetching times for selected date:", error);
     }
-  };
+  }, []);
+
+   useEffect(() => {
+     initializeTimes(new Date());
+          }, [initializeTimes]);
+  
+
 
   return  (
       <div>
@@ -61,4 +53,5 @@ export default function BookingPage() {
         </div>
     )
 };
+
 

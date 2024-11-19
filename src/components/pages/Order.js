@@ -1,7 +1,7 @@
 export default function Order () {
     return  (
         <>
-<div className="login">
+<div className="menu">
     <h2>Order online</h2>
 </div>
 

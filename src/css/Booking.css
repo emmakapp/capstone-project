@@ -3,10 +3,10 @@
 .form-wrapper {
     display: flex;
     max-width: 600px;
-
     flex-direction: column;
     margin: 100px auto;
-    background-color: #fff;
+    padding: 40px;
+    background-color: #EDEFEE;
   }
 
 
@@ -16,7 +16,7 @@ main {
   
 h2#bookingform-section {
     max-height: 100%;
-    background-color: #fff;
+
 }
   
 #bookingform-section {
@@ -68,6 +68,11 @@ input {
     color: #fff;
     padding: 12px 14px;
     border-radius: 16px;
+
+}
+
+.formgroup{
+    margin-bottom: 20px;
 }
   
 .selected {
@@ -78,13 +83,17 @@ input {
 input:active {
     color: #EE9972;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-    background-color: #EDEFEE;
+    background-color: #fff;
 }
   
 input:hover {
-    background-color: #EDEFEE;
+    background-color: #fff;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
     color: #EE9972;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
   
 select {
@@ -110,7 +119,11 @@ option {
     padding: 12px 14px;
     border-radius: 16px;
 }
-  
+ 
+::placeholder {
+    color: #fff;
+}
+
 option:active {
     background-color: #495E57;
     color: #fff;
@@ -146,7 +159,7 @@ select {
     border-color: black;
     border-width: 2px;
     border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-color: black;
 }
   
 label {
@@ -160,12 +173,10 @@ label {
     margin-top: 20px;
 }
 
-.booking-btn[type="submit"] {
-    margin-top: 1rem;
-}
+
 
 .error {
-    padding: 4px;
+    padding-bottom: 4px;
     color: red;
 }
 
@@ -184,6 +195,8 @@ label {
     width: 300px;
     height:60px;
 }
+
+
   
 .booking-btn[type="submit"]:active {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
@@ -193,8 +206,28 @@ label {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
     color: #495E57;
   }
+
+  .booking-backbutton[type="submit"] {
+    font-family: 'Karla', sans-serif;
+    font-weight: 500;
+    font-size: 18pt;
+    border-radius: 16px;
+    border-color: black;
+    color: black;
+    background-color: #F4CE17;
+    margin-top: 50px;
+    padding: 12px 24px;
+    transition: .4s;
+    cursor: pointer;
+    width: 200px;
+    height:60px;
+}
   
   
+  p.error-message.hidden {
+    font-size: small;
+    color: red;;
+  }
 
   /* for smaller screens */
 

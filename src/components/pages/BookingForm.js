@@ -1,131 +1,122 @@
-import { useEffect, useState } from 'react';
 
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import parse from "date-fns/parse"
 import { useNavigate } from 'react-router-dom';
-import { submitAPI } from '../../utilities/fetchAPIutil';
-import { ErrorMessage } from '../ErrorMessage';
-
 import "../../css/Booking.css";
 
 function BookingForm(props) {
-   const [date, setDate] = useState("");
-   const [guests, setGuests] = useState("");
-   const [occasion, setOccasion] = useState("");
-   const [selectedTime, setSelectedTime] = useState("");
-
-   const [finalTime, setFinalTime] = useState([]);
-   const [error, setError] = useState(false);
-
- 
-
-
-   useEffect(() => {
-
-      setFinalTime(props.availableTimes.map((time) => <option key={time}>
-         {time}
-      </option>));
-   }, [props.availableTimes]);
- 
-   function handleDateChange(e) {
-      const selectedDate = new Date(e.target.value);
-      setDate(e.target.value);
-      props.updateTimes(selectedDate);
-   };
+      const navigate = useNavigate();
    
-   
-   const navigate = useNavigate();
-   async function submitForm(e) {
-      e.preventDefault();
-      try {
-         const formData = { date, guests, occasion, time: selectedTime };
-         const response = await submitAPI(formData);
-         if (response) {
-            setError(false);
-            localStorage.setItem('formData', JSON.stringify(formData));
-            navigate("/confirmation");
-         } else {
-            throw new Error('Submission failed');
-         } 
-         } catch (error) {
-            setError(true);
-            console.log("there is an error submitting the form", error);
-         
-      }
-      
-   }
+      return (
+   <Formik 
+      initialValues={{ date: '', time: '', guests: '', occasion: '' }}
+      validationSchema={Yup.object({
+         date: Yup.date().transform(function (value, originalValue) {
+             if (this.isType(value)) {
+                 return value;
+             }
+             const result = parse(originalValue, "dd.MM.yyyy", new Date());
+             return result;
+            }).typeError("Please enter a valid date").required('Required').min("2024-11-24", "Date has passed"),
+         time: Yup.string().oneOf(["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"], 'Invalid time')
+            .required('Required'),
+         guests: Yup.number().min(1,'Must have at least 1 guest')
+            .max(10, 'If you have more than 10 guests, please call us at 412-123-1234.')
+            .required('Required.'),
+         occasion: Yup.string()
+            .notRequired(),
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+         localStorage.setItem('formData', JSON.stringify(values));
+         navigate("/confirmation");
+         setSubmitting(false);
+         }}
+           >
+{({ isSubmitting, errors, touched }) => (
 
-   return (
-      <>
-     <form onSubmit={submitForm}>
+
+
+     <Form>
          <div className='form-wrapper'>
             <h3 style={{ paddingBottom: "40px",textAlign:"center" }}>Please fill in the form below</h3>
-               <div>
+               <div className='formgroup'>
            
-               <label htmlFor="res-date">Pick a date</label>
-                  <input
-                     id="res-date" 
+               <label htmlFor="Pick a date">Pick a date</label>
+                  <Field
+                     id="Pick a date" 
                      type="date" 
                      required
-                     value={date}
-                     onChange={handleDateChange}
-                     name='res-date'
-                     aria-label="res-date"
-                     
+                     min="2024-10-24" 
+                     name='date'
+                     aria-label="date"
+                     alt="Pick a date"
+                     placeholder="Pick a date"
                   />
-            </div>
+                  {errors.date && touched.date ? ( <div role="alert" className='error'>{errors.date}</div> ) : null }
+               </div>
             
-            <div>
-               <label htmlFor="res-time">Pick a time</label>
-                  <select
-                     id="res-time"
-                     type="time"
+               <div className='formgroup'>
+               <label htmlFor="time">Pick a time</label>
+                  <Field as="select"
+                     id="time"
+                     name='time'
+                     aria-label='time'
+                     placeholder="Enter a time"
+                      alt="Enter a time"
                      required
-                     name='res-time'
-                     placeholder=''
-                     aria-label='res-time'
-                     value={selectedTime}
-                     onChange={(e) => setSelectedTime(e.target.value)} >
- 
-                
-                     {finalTime}
-                   </select>
+                   >
+                     {props.availableTimes?.map((time) => (
+                        <option key={time} value={time}>
+                   {time}
+                </option>
+                ))}
+                  </Field>
+                   {errors.time && touched.time ? ( <div role="alert" className='error'>{errors.time}</div> ) : null }   
+
               </div>
-              <div>
+              <div className='formgroup'>
                <label htmlFor="guests">Number of Guests</label>
-                  <input
+                  <Field
                      id="guests" 
-                     type="number"  
                      name="guests"
                      min="1"
                      max="10"
-                     required
-                     aria-label='Number of Guests'
-                     value={guests}
-                     placeholder=""  
-                     onChange={(e) => setGuests(e.target.value)} />
+                     aria-label="guests"
+                     alt="Number of Guests"
+                     required=""
+                     placeholder="example: 2"
+                      />
+               {errors.guests && touched.guests ? ( <div role='alert' className='error'>{errors.guests}</div> ) : null }   
                </div>
-               <div>
-               <label htmlFor="booking-occasion">If applicable, pick an occasion.</label>
-                  <select
-                     id="booking-occasion" 
-                     value={occasion}
-                     onChange={(e) => setOccasion(e.target.value)} 
+               
+               <div className='formgroup'>
+               <label htmlFor="occasion">Occasion</label>
+                  <Field as="select"
+                     id="occasion" 
+                     alt="Select an Occasion"
+                     name="occasion"
+                    aria-label="Select an Occasion"
+                    placeholder="optional"
                   >
-                  <option value="Select an Occasion">Select an Occasion</option>
+                 <option defaultValue>optional</option>
                   <option value="Birthday">Birthday</option>
                   <option value="Anniversary">Anniversary</option>
                   <option value="Engagement">Engagement</option>
-                </select>
+                </Field>
                </div>
-            { error && <ErrorMessage message="There was an error submitting this reservation" />}
-         <button 
+         <button
+ 
             className="booking-btn" 
-            id="submit-button" 
+            name='button'
+            alt="Submit button"
             type="submit"  
-         >Reserve my table</button>
-</div>
-</form>
-
-   </>
+            disabled={isSubmitting}  // disable button if form is submitting
+         >Submit</button>
+   </div>
+   </Form>
+   )}
+      </Formik>
    );
 };
 

@@ -2,12 +2,10 @@
 .nav-layout {
     display: flex;
     align-items: center;
-    
     justify-content: space-between;
     vertical-align: baseline;
     background-color: #fff;
     max-width: 960px;
-
     margin: 0 auto;
 }
 
@@ -16,7 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;    
-
     background-color: #fff;
     max-width: 960px;
     padding-top: 20px;
@@ -26,7 +23,6 @@
 .nav-menu a {
     display: inline-block;
     text-decoration: none;
-    font-family: Karla;
     font-family: 'Karla', sans-serif;
     font-weight: 600;
     font-size: 16pt;
@@ -107,7 +103,6 @@
     .nav-menu a {
         display: inline-block;
         text-decoration: none;
-        font-family: Karla;
         font-family: 'Karla', sans-serif;
         font-weight: 600;
         font-size: 16pt;
@@ -124,7 +119,7 @@
         flex-direction: column;
         align-items: center;
         right: -150%;
-        background: rgba(255, 255, 255, .98);
+        background: #fff;
         transition: 0.4s ease-in-out;
         margin-bottom: 0px;
         padding-top: 20px;
@@ -143,7 +138,6 @@
     .nav-menu:hover {
         font-size: 2rem;
         color: #495E57;
-
         margin-top: 100px;;
     }
     

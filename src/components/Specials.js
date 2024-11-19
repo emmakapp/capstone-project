@@ -1,5 +1,6 @@
 import React from "react";
 import CardSpecial from "./CardSpecial";
+import { useNavigate } from "react-router-dom";
 
 import "../css/Specials.css"
 
@@ -30,13 +31,17 @@ const specials = [
 ];
 
 const Specials = () => {
+    const navigate = useNavigate();
+    const navigateToMenu = () =>
+    {
+        navigate('/menu');
+    }
     return (
         <div className="cardspecials">
           
                 <div className="welcome" >
                     <h2>This week's specials</h2>
-                        <button type="button" style={{ backgroundColor: "#F4CE17", padding: "12px 24px", marginTop:"20px", marginBottom:"20px" }} >
-                            <a href="./order"> Online Menu</a></button>
+                        <button type="button" aria-label="On Click goes to menu page" className="booking-backbutton"style={{ width: "200px", marginTop: "20px" }} onClick={navigateToMenu}>Online menu</button>
                     </div>
                 <div className="cards">
                     <div id="card">

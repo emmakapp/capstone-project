@@ -15,7 +15,7 @@ export default function Header () {
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                
                 <div className="herobutton" type="button" >
-                    <Link to="/bookingpage"> <button aria-label="On Click">Reserve a Table</button> </Link>
+                    <Link to="/bookingpage"> <button aria-label="On Click" type="button">Reserve a Table</button> </Link>
                 </div></div>
           
                 <div className="headerimage">

@@ -13,7 +13,7 @@ export const bookingSchema = yup.object().shape({
         })
         .typeError("Please enter a valid date")
         .required('Required')
-        .min("2024-03-25", "Date has passed"),
+        .min("2024-10-24", "Date has passed"),
         
     time: yup
         .string()
@@ -23,27 +23,5 @@ export const bookingSchema = yup.object().shape({
         .number()
         .min(1,'Must have at least 1 guest')
         .max(10, 'If you have more than 10 guests, please call us at 412-123-1234.')
-        .required('Required'),
-    
-
-          
-    firstname: yup
-        .string()
-        .max(20, "Too long.")
-        .required('Required'),
-    lastname: yup
-        .string()
-        .max(20, "Too long.")
-        .required('Required'),
-    email: yup
-        .string()
-        .email('Invalid email address')
-        .required('Required'),
-    phone: yup
-        .string()
-        .required('Required'),
-
-
-
-
-})
+        .required('Required. Must be a number under 11.'),
+ })

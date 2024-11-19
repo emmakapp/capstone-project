@@ -12,8 +12,8 @@ import '../css/Navbar.css';
 
 const Navbar = () => {
     
-  const[click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const[minimenu, setMinimenu] = useState(false);
+  const handleMinimenu = () => setMinimenu(!minimenu);
 
   return (
     <>
@@ -26,17 +26,17 @@ const Navbar = () => {
               <NavLink to='/'><img src={logo} alt="Logo" /></NavLink>
       </div>
                 
-        <div className={click ? 'nav-menu active' : 'nav-menu'} >
-                <NavLink to="/" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>Home</NavLink>
-                <NavHashLink  to="/about" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>About</NavHashLink>
-                <NavLink to="/menu" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>Menu</NavLink>
-                <NavLink to="/bookingpage" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>Reservations</NavLink>
-                <NavLink to="/order" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>Order</NavLink>
-                <NavLink to="/login" className={({ isActive, isPending }) => (isPending ? 'pending': isActive ? 'active' : '' )}>Login</NavLink>
+        <div className={minimenu ? 'nav-menu active' : 'nav-menu'} >
+                <NavLink to="/" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )}>Home</NavLink>
+                <NavHashLink  to="/about" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )} alt="About us">About</NavHashLink>
+                <NavLink to="/menu" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )}>Menu</NavLink>
+                <NavLink to="/bookingpage" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )}>Reservations</NavLink>
+                <NavLink to="/order" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )}>Order</NavLink>
+                <NavLink to="/login" className={({ isactive, isPending }) => (isPending ? 'pending': isactive ? 'active' : '' )}>Login</NavLink>
          </div>
               
-          <div className='hamburger' onClick={handleClick} aria-label='Toggle navigation menu'>
-                    {click ? (<FaRegTimesCircle className='icon' />) : (<HiOutlineMenu className='icon' />)}
+          <div className='hamburger' onClick={handleMinimenu} aria-label='Toggle navigation menu' role='navigation'>
+                    {minimenu ? (<FaRegTimesCircle className='icon' />) : (<HiOutlineMenu className='icon' />)}
            </div>
            <div><Outlet /></div>
            </div>

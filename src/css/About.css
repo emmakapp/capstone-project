@@ -65,8 +65,7 @@
   .title-about {
       display: flex;
       flex: 0 1 auto;
-      padding-right: 20px;
-      padding-bottom: 1px;
+     padding: 30px;
   }
 
   .aboutimage{

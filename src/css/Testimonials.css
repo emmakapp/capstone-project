@@ -52,11 +52,10 @@
       flex-wrap: wrap;
       justify-content: space-between;
     }
- 
-    .box-test {  
+
+    .box-test {
     flex: 2 2 20%;
     transition: flex-basis 0.2s linear;
     }
 
-
-  }
+}

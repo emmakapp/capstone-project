@@ -14,14 +14,14 @@ export default function Header () {
                     <h2>Pittsburgh</h2>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                
-                <div className="herobutton" type="button" >
-                    <Link to="/bookingpage"> <button aria-label="On Click" type="button">Reserve a Table</button> </Link>
-                </div></div>
+                    <div className="herobutton" type="button" >
+                        <Link to="/bookingpage"> <button aria-label="On Click" type="button">Reserve a Table</button> </Link>
+                    </div>
+                </div>
           
                 <div className="headerimage">
                     <img src={restaurantfood}  alt="restaurant server" /> 
                 </div>
-           
             </section>
         </div>
     )

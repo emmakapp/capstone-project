@@ -1,5 +1,4 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
-
 import RootLayout from "../layouts/RootLayout";
 import BookingPage from "./pages/BookingPage";
 import Confirmation from "./pages/Confirmation";

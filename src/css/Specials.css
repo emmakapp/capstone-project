@@ -1,7 +1,6 @@
 .cardspecials {
     width: 100%;
     max-width: 960px;
-
     height: 100%;
     padding-top: 40px;
     align-items: center;
@@ -19,7 +18,6 @@
     margin-left: 0px;
     margin-right: 0px;
     padding: 0px;
-    
 }
 
 #card {
@@ -39,13 +37,11 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
     background-color: #EDEFEE;
-   
     color: black;
 }
 
@@ -57,14 +53,12 @@
     padding-top: 40px;
     align-items: center;
 }
- 
+
 .card-content {
     padding: 20px;
     display: flex;
     flex-direction: column;
     flex: 1;
-    
-   
 }
 
 .card-image {
@@ -81,35 +75,31 @@
 
 .specialtitle {
     display: flex;
-
     justify-content: space-between;
     margin-top: auto;
 }
- 
+
 .specialfooter {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
     flex-wrap: wrap;
-
 }
-
 
 .bicycleicon {
     color: #495E57;
 }
- 
+
 
 /* for smaller screens */
-  
+
 @media screen and (min-width: 960px) {
 
   .cardspecials {
       margin-left: auto;
       margin-right: auto;
- 
-      align-items: center; 
-  }  
+      align-items: center;
+  }
 
   .cards {
       display: flex;
@@ -117,7 +107,7 @@
       justify-content: space-between;
   }
   
-  #card {  
+  #card {
       flex: 2 2 100%;
       transition: flex-basis 0.2s linear;
       flex-wrap: wrap;
@@ -131,7 +121,6 @@
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
       border-bottom-left-radius: 0%;
-
       background-color: #EDEFEE;
       color: black;
   }

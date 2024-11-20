@@ -4,24 +4,15 @@ import logogreen from '../assets/logogreen.png';
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import "../css/Footer.css";
-
-
-
-
-
-
-
 function Footer() {
     return  (
         <footer className="wrapper-bottom">
             <div id="footer-columns">
-            
+                <div className='footermenu' > <Link to='/' alt="home"><img src={logogreen} alt="Logo" /></Link>
+                </div>
                 
-                    <div className='footermenu' > <Link to='/' alt="logo"><img src={logogreen} alt="Logo" /></Link>
-                    </div>
-                
-                    <div className='footermenu'>
-                        <p style={{ fontSize: "14pt" }}><b>Navigation</b></p>
+                <div className='footermenu'>
+                    <p style={{ fontSize: "14pt" }}><b>Navigation</b></p>
                         <ul>
                             <li><Link to='/' title='Home page'>Home</Link></li>
                             <li><Link to='/about'title='About us'>About</Link></li>
@@ -51,8 +42,7 @@ function Footer() {
                     </div>
             </div>
         </footer>
-    )
-}
-
+    );
+};
 
 export default Footer;

@@ -68,7 +68,6 @@ input {
     color: #fff;
     padding: 12px 14px;
     border-radius: 16px;
-
 }
 
 .formgroup{
@@ -170,10 +169,8 @@ label {
     text-align: left;
     width: 400px;
     padding-left: 2px;
-    margin-top: 20px;
+    margin-top: 1rem;
 }
-
-
 
 .error {
     padding-bottom: 4px;
@@ -188,16 +185,14 @@ label {
     border-color: black;
     color: black;
     background-color: #F4CE17;
-    margin-top: 50px;
+    margin-top: 1rem;
     padding: 12px 24px;
     transition: .4s;
     cursor: pointer;
     width: 300px;
     height:60px;
 }
-
-
-  
+ 
 .booking-btn[type="submit"]:active {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
 }
@@ -205,9 +200,9 @@ label {
 .booking-btn[type="submit"]:hover {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
     color: #495E57;
-  }
+}
 
-  .booking-backbutton[type="submit"] {
+.booking-backbutton[type="submit"] {
     font-family: 'Karla', sans-serif;
     font-weight: 500;
     font-size: 18pt;
@@ -224,10 +219,10 @@ label {
 }
   
   
-  p.error-message.hidden {
+p.error-message.hidden {
     font-size: small;
     color: red;;
-  }
+}
 
   /* for smaller screens */
 
@@ -242,9 +237,7 @@ label {
     }
 
     .form-wrapper {
-    
         margin: 20px auto;
-
       }
 
     .booking-description {

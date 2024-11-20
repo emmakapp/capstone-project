@@ -60,7 +60,7 @@ h1 {
   font-weight: 500;
   font-size: 64pt;
   color:#F4CE17;
-  line-height: 1rem;
+  line-height: 3rem;
   padding-top: 20px;
 }
 
@@ -68,7 +68,7 @@ h2 {
   font-family: 'Markazi Text', serif;
   font-weight: 400;
   font-size: 40pt;
-  line-height: 1.50;
+  line-height: 3rem;
 }
 
 h3 {
@@ -157,18 +157,17 @@ p {
 
     /* confirmation page*/
 
-#confirmationwrapper {
-  display: flex;
-  max-width: 960px;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin: 100px auto;
-  background-color: #fff;
+    #confirmationwrapper {
+      display: flex;
+      max-width: 960px;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-left: 50px;
+      padding-right: 50px;
+      margin: 100px auto;
+      background-color: #fff;
+    }
+
 }
-
-
- }
 
 

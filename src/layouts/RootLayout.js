@@ -11,24 +11,17 @@ import Order from "../components/pages/Order";
 import Login from "../components/pages/Login";  
 
 export default function RootLayout()  {
-
   return (
     <Routes>
-    
-                <Route path="/" element={<Home />} />
-                <Route path="/about"element={<About />} />
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/bookingform" element={<BookingForm />} />
-                <Route path="/bookingpage" element={<BookingPage />} />
-                <Route path="/confirmation" element={<Confirmation />} />
-              
-
-                <Route path="/specials"element={<Specials />} />
-                <Route path="/order"element={<Order />} />
-                <Route path="/login"element={<Login />} />
-
-
-
+      <Route path="/" element={<Home />} />
+      <Route path="/about"element={<About />} />
+      <Route path="/menu" element={<Menu />} />
+      <Route path="/bookingform" element={<BookingForm />} />
+      <Route path="/bookingpage" element={<BookingPage />} />
+      <Route path="/confirmation" element={<Confirmation />} />
+      <Route path="/specials"element={<Specials />} />
+      <Route path="/order"element={<Order />} />
+      <Route path="/login"element={<Login />} />
    </Routes>
   )
 }

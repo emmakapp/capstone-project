@@ -19,11 +19,7 @@
 
 .intro {
   flex-direction: column;
-  flex: 1 1 0;
- }
-
-
- 
+}
 
 #hero p {
   padding: 20px 0;
@@ -33,8 +29,7 @@
   line-height: 150%;
   max-inline-size: 35ch;
   text-align: left;
-    }
-
+}
   
 .headerimage {
   display: flex;
@@ -48,38 +43,32 @@
   max-width: 60%;
   border-radius: 16px;
   transform: translate(0px, 20px); 
-  }
+}
 
-
+  /* for smaller screens */
 
   @media screen and (max-width: 940px) {
 
-
     .wrapper-header {
       display: flex;
-      
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 20%;
-  
     }
     
     #hero {
       flex-direction: column;
       flex-wrap: wrap;
-  
-      
     }
   
     .intro {  
     flex: 1 1 1;
     padding-left: 20px;
     padding-right: 20px;
+    }
 
-  }
-
-  .headerimage {
+    .headerimage {
     display: none;
-
   }
-  }
+  
+}
